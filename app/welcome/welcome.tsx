@@ -3,9 +3,7 @@ import { useState } from "react";
 export function Welcome() {
   // サンプルデータ
   const title = "店内にミャクミャクグッズはいくつあるでしょう？";
-  // 正解値
-  const correctAnswer = 20;
-
+  
   const [inputValue, setInputValue] = useState("");
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,7 +12,7 @@ export function Welcome() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsCorrect(Number(inputValue.trim()) === correctAnswer);
+    setIsCorrect(Number(inputValue.trim()) === 20 || inputValue.trim() == "２０");
     setModalOpen(true);
   };
 
@@ -37,7 +35,7 @@ export function Welcome() {
             type="text"
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
-            placeholder="半角数字で入力"
+            placeholder="数字を入力"
             className="mb-4 w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg"
           />
           <button
