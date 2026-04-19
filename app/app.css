@@ -28,4 +28,15 @@ html, body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
+}
+
+/* 白の透過レイヤー */
+.welcome-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.6); /* 透過度は調整可 */
+  z-index: 0;
+  pointer-events: none;
 }

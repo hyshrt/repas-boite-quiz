@@ -22,14 +22,14 @@ export function Welcome() {
   };
 
   return (
-    <main className="welcome-bg flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-4">
-      <div className="card-opacity rounded-xl shadow-md p-6 text-2xl font-bold mb-8 text-center border border-gray-200 dark:border-gray-700">
+    <main className="welcome-bg flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-4 relative overflow-hidden">
+      <div className="card-opacity rounded-xl shadow-md p-6 text-2xl font-bold mb-8 text-center border border-gray-200 dark:border-gray-700 relative z-10">
         {title}
       </div>
       <div className="flex flex-col gap-4 w-full max-w-xs">
         <form
           onSubmit={handleSubmit}
-          className="card-opacity rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700 flex flex-col items-center"
+          className="card-opacity rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700 flex flex-col items-center relative z-10"
         >
           <input
             type="text"
