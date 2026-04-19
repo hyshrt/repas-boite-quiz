@@ -1,3 +1,10 @@
+/* カードの透明度 */
+.card-opacity {
+  background-color: rgba(255,255,255,0.95);
+}
+.dark .card-opacity {
+  background-color: rgba(31,41,55,0.95); /* dark:bg-gray-800相当 */
+}
 @import "tailwindcss";
 
 @theme {
@@ -5,11 +12,20 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-html,
-body {
+
+html, body {
   @apply bg-white dark:bg-gray-950;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+/* Welcome画面用の背景画像クラス */
+.welcome-bg {
+  min-height: 100vh;
+  background-image: url('/background-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

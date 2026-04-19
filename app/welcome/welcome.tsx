@@ -2,18 +2,19 @@ import { useState } from "react";
 
 export function Welcome() {
   // サンプルデータ
-  const title = "店内に、ミャクミャクグッズがいくつあるでしょう？";
-  const options = [
-    { text: "10個", isCorrect: false },
-    { text: "20個", isCorrect: true },
-    { text: "30個", isCorrect: false },
-  ];
+  const title = "店内にミャクミャクグッズはいくつあるでしょう？";
+  // 正解値
+  const correctAnswer = 20;
+
+  const [inputValue, setInputValue] = useState("");
 
   const [modalOpen, setModalOpen] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
-  const handleCardClick = (correct: boolean) => {
-    setIsCorrect(correct);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsCorrect(Number(inputValue.trim()) === correctAnswer);
     setModalOpen(true);
   };
 
@@ -23,23 +24,37 @@ export function Welcome() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-4">
-      <h1 className="text-2xl font-bold mb-8 text-center">{title}</h1>
+    <main className="welcome-bg flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-4">
+      <div className="card-opacity rounded-xl shadow-md p-6 text-2xl font-bold mb-8 text-center border border-gray-200 dark:border-gray-700">
+        {title}
+      </div>
       <div className="flex flex-col gap-4 w-full max-w-xs">
-        {options.map((option, idx) => (
+        <form
+          onSubmit={handleSubmit}
+          className="card-opacity rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700 flex flex-col items-center"
+        >
+          <input
+            type="text"
+            value={inputValue}
+            onChange={e => setInputValue(e.target.value)}
+            placeholder="半角数字で入力"
+            className="mb-4 w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg"
+          />
           <button
-            key={option.text}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 text-lg font-medium border border-gray-200 dark:border-gray-700 active:scale-95 transition-transform"
-            onClick={() => handleCardClick(option.isCorrect)}
+            type="submit"
+            className="w-full px-4 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 text-lg"
           >
-            {option.text}
+            答え合わせ
           </button>
-        ))}
+        </form>
       </div>
 
       {/* モーダル */}
       {modalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+        <div
+          className="fixed inset-0 flex items-center justify-center z-50"
+          style={{ backgroundColor: "rgba(0,0,0,0.2)" }}
+        >
           <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg flex flex-col items-center">
             <div className={`text-2xl font-bold mb-4 ${isCorrect ? "text-green-600" : "text-red-600"}`}>
               {isCorrect ? "正解" : "不正解"}
