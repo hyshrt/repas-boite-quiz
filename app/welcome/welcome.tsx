@@ -23,20 +23,20 @@ export function Welcome() {
 
   return (
     <main className="welcome-bg flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-4 relative overflow-hidden">
-      <div className="card-opacity rounded-xl shadow-md p-6 text-2xl font-bold mb-8 text-center border border-gray-200 dark:border-gray-700 relative z-10">
+      <div className="card-opacity rounded-xl shadow-md p-6 text-2xl font-bold mb-8 text-center border border-gray-200 relative z-10">
         {title}
       </div>
       <div className="flex flex-col gap-4 w-full max-w-xs">
         <form
           onSubmit={handleSubmit}
-          className="card-opacity rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700 flex flex-col items-center relative z-10"
+          className="card-opacity rounded-xl shadow-md p-6 border border-gray-200 flex flex-col items-center relative z-10"
         >
           <input
             type="text"
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
             placeholder="数字を入力"
-            className="mb-4 w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg"
+            className="mb-4 w-full px-4 py-2 rounded border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg"
           />
           <button
             type="submit"
